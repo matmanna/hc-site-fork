@@ -1,6 +1,8 @@
-import { Box, Card, Link, Text } from 'theme-ui'
+import { Box, Card, Link, Text, useColorMode } from 'theme-ui'
 
 export default function MailCard({ body, date, link, issue }) {
+  const [colorMode] = useColorMode()
+  const isDarkMode = colorMode === 'dark'
   body = body.length > 130 ? body.substring(0, 130) + '...' : body
   return (
     <Card
@@ -19,7 +21,7 @@ export default function MailCard({ body, date, link, issue }) {
         <Box
           sx={{
             height: '90%',
-            color: 'black',
+            color: isDarkMode ? 'rgba(255, 255, 255, 0.88)' : 'black',
             textDecoration: 'none !important'
           }}
         >
@@ -43,9 +45,9 @@ export default function MailCard({ body, date, link, issue }) {
             <Box sx={{ px: [3, 4] }}>
               <Text>
                 {date}
-                <Text sx={{ color: '#8492a6' }}>— From Hack Club, to You</Text>
+                <Text sx={{ color: isDarkMode ? 'rgba(255, 255, 255, 0.6)' : '#555' }}>— From Hack Club, to You</Text>
               </Text>
-              <Text as="h2" sx={{ fontWeight: 'normal' }}>
+              <Text as="h2" sx={{ fontWeight: 'normal', color: isDarkMode ? 'rgba(255, 255, 255, 0.88)' : '#333' }}>
                 {body}
               </Text>
             </Box>

@@ -1,4 +1,4 @@
-import { Box, Card, Image, Link, Text } from 'theme-ui'
+import { Box, Card, Image, Link, Text, useColorMode } from 'theme-ui'
 import Icon from '../icon'
 
 export default function CarouselCards({
@@ -7,11 +7,42 @@ export default function CarouselCards({
   backgroundSize,
   titleColor,
   descriptionColor,
+  lightBackground,
+  darkBackground,
+  lightTitleColor,
+  darkTitleColor,
+  lightDescriptionColor,
+  darkDescriptionColor,
+  lightIconColor,
+  darkIconColor,
   title,
   description,
   img,
   link
 }) {
+  const [colorMode] = useColorMode()
+  const isDarkMode = colorMode === 'dark'
+
+  const finalBackground = lightBackground
+    ? isDarkMode
+      ? darkBackground
+      : lightBackground
+    : background
+  const finalTitleColor = lightTitleColor
+    ? isDarkMode
+      ? darkTitleColor
+      : lightTitleColor
+    : titleColor
+  const finalDescriptionColor = lightDescriptionColor
+    ? isDarkMode
+      ? darkDescriptionColor
+      : lightDescriptionColor
+    : descriptionColor
+  const finalIconColor = lightIconColor
+    ? isDarkMode
+      ? darkIconColor
+      : lightIconColor
+    : '#E9E9E9'
   return (
     <Box
       sx={{
@@ -56,7 +87,7 @@ export default function CarouselCards({
           // variant="interactive"
           sx={{
             mr: 3,
-            background,
+            background: finalBackground,
             backgroundImage,
             backgroundSize,
             position: 'relative',
@@ -73,20 +104,20 @@ export default function CarouselCards({
         >
           <Text
             as="h3"
-            sx={{ color: titleColor, fontSize: ['20px', '21px', '22px'] }}
+            sx={{ color: finalTitleColor, fontSize: ['20px', '21px', '22px'] }}
           >
             {title}
           </Text>
           <Text
             as="p"
-            sx={{ color: descriptionColor, fontSize: [1, '16px', '20px'] }}
+            sx={{ color: finalDescriptionColor, fontSize: [1, '16px', '20px'] }}
           >
             {description}
           </Text>
           <Icon
             glyph="external"
             size={32}
-            color="#E9E9E9"
+            color={finalIconColor}
             sx={{
               position: 'absolute',
               top: 2,

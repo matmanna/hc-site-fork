@@ -8,7 +8,8 @@ import {
   Grid,
   Heading,
   Link,
-  Text
+  Text,
+  useColorMode
 } from 'theme-ui'
 import { useEffect, useRef, useState } from 'react'
 import Head from 'next/head'
@@ -121,6 +122,8 @@ function Page({
   const [reveal, setReveal] = useState(false)
   const [hover, setHover] = useState(true)
   const [announcement, setAnnouncement] = useState(null)
+  const [colorMode] = useColorMode()
+  const isDarkMode = colorMode === 'dark'
 
   const { asPath } = useRouter()
 
@@ -219,19 +222,28 @@ function Page({
   const spotlightRef = useRef(null)
   useEffect(() => {
     const handler = event => {
-      const rect = document.getElementById('spotlight').getBoundingClientRect()
+      const spotlight = document.getElementById('spotlight')
+      if (!spotlight || !spotlightRef.current) return
+
+      const rect = spotlight.getBoundingClientRect()
       const x = event.clientX - rect.left //x position within the element.
       const y = event.clientY - rect.top //y position within the element.
+      const spotlightEdge = isDarkMode
+        ? 'rgba(132, 146, 166, 0.12)'
+        : 'rgba(132, 146, 166, 0)'
+      const spotlightFill = isDarkMode
+        ? 'rgba(27, 36, 54, 0.92)'
+        : 'rgba(249, 250, 252, 0.9)'
 
       spotlightRef.current.style.background = `radial-gradient(
 				circle at ${x}px ${y}px,
-				rgba(132, 146, 166, 0) 10px,
-				rgba(249, 250, 252, 0.9) 80px
+				${spotlightEdge} 10px,
+				${spotlightFill} 80px
 			)`
     }
     window.addEventListener('mousemove', handler)
     return () => window.removeEventListener('mousemove', handler)
-  }, [])
+  }, [isDarkMode])
 
   return (
     <>
@@ -303,7 +315,7 @@ function Page({
             <Text
               variant="eyebrow"
               sx={{
-                color: 'sunken',
+                color: isDarkMode ? 'rgba(255, 255, 255, 0.88)' : 'sunken',
                 pb: 2,
                 position: 'relative',
                 display: 'block'
@@ -533,7 +545,13 @@ function Page({
             </Badge>
           </Box>
         </Box>
-        <Box as="section" sx={{ py: [4, 5, '82px'], color: 'black' }}>
+        <Box
+          as="section"
+          sx={{
+            py: [4, 5, '82px'],
+            color: isDarkMode ? 'rgba(255, 255, 255, 0.9)' : 'black'
+          }}
+        >
           <Box
             sx={{
               position: 'relative',
@@ -829,8 +847,8 @@ function Page({
           as="section"
           sx={{
             backgroundImage: `
-              linear-gradient(rgba(249, 250, 252, 0.7), rgba(249, 250, 252, 0.7)),
-              url('https://icons.hackclub.com/api/icons/0x8492a6/glyph:rep.svg')
+              linear-gradient(${isDarkMode ? 'rgba(27, 36, 54, 0.78)' : 'rgba(249, 250, 252, 0.7)'}, ${isDarkMode ? 'rgba(27, 36, 54, 0.78)' : 'rgba(249, 250, 252, 0.7)'}),
+              url('https://icons.hackclub.com/api/icons/${isDarkMode ? '0x5bc0de' : '0x8492a6'}/glyph:rep.svg')
             `,
             backgroundSize: '40px 40px',
             backgroundRepeat: 'repeat',
@@ -1028,7 +1046,7 @@ function Page({
             sx={{
               position: 'relative',
               background: 'snow',
-              backgroundImage: `url('https://icons.hackclub.com/api/icons/0xF4F7FB/glyph:rep.svg')`,
+              backgroundImage: `url('https://icons.hackclub.com/api/icons/${isDarkMode ? '0x3c4b65' : '0xF4F7FB'}/glyph:rep.svg')`,
               backgroundSize: '40px 40px',
               backgroundRepeat: 'repeat',
               backgroundPosition: '10% 10%'

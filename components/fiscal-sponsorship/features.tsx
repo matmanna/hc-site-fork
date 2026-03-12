@@ -13,7 +13,7 @@ export default function Features() {
             Powerful financial tools built by our nonprofit, for yours.
           </Balancer>
         </Heading>
-        <Text as="p" variant="lead" sx={{ color: 'slate', maxWidth: '55ch' }}>
+        <Text as="p" variant="lead" sx={{ color: 'secondary', maxWidth: '55ch' }}>
           Since day one, we’ve built beautiful, self-serve software to empower
           you to raise and spend money without administrative hassle. We’re also open&nbsp;source!
         </Text>
@@ -98,14 +98,14 @@ function Module({ icon, name, body }) {
       <Text
         as="p"
         sx={{
-          color: 'slate',
+          color: 'secondary',
           lineHeight: '1.375',
           fontSize: 20,
           m: 0
         }}
       >
         <Balancer>
-          <Text as="strong" color="slate">
+          <Text as="strong" color="text">
             {name}
           </Text>{' '}
           {body}

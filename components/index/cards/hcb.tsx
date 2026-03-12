@@ -14,7 +14,7 @@ export default function Bank({ data }) {
           backgroundImage: `linear-gradient(to bottom,rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url('/home/hackathons-bg.webp')`,
           backgroundSize: 'cover',
           backgroundPosition: '40%',
-          color: 'snow'
+          color: 'white'
         }}
         badge
         text={data[0] === 'error' ? 'The coolest money thing' : data[0]}

@@ -83,11 +83,13 @@ function MobileAppAlert() {
           py: ['25px', 3],
           px: 4,
           background: [
-            'rgba(200, 200, 200, 0.3)',
-            'linear-gradient(rgba(255,255,255,0.4), rgba(200,200,200,.3))'
+            'var(--theme-ui-colors-sheet)',
+            'linear-gradient(var(--theme-ui-colors-sheet), var(--theme-ui-colors-snow))'
           ],
           backdropFilter: 'blur(20px)',
           borderRadius: 20,
+          border: '1px solid',
+          borderColor: 'border',
           boxShadow:
             '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
           display: 'flex',
@@ -548,14 +550,16 @@ export default function Page() {
                   position: 'absolute',
                   bottom: 12,
                   left: 12,
-                  bg: 'white',
-                  color: 'slate',
+                  bg: 'elevated',
+                  color: 'text',
                   fontSize: 14,
                   fontWeight: 'bold',
                   px: 3,
                   py: 2,
                   borderRadius: 30,
-                  boxShadow: 'small'
+                  boxShadow: 'small',
+                  border: '1px solid',
+                  borderColor: 'border'
                 }}
               >
                 {mobileInstalls.toLocaleString()} installs
@@ -861,15 +865,17 @@ export default function Page() {
             <Button
               variant="lg"
               sx={{
-                bg: 'white',
-                mixBlendMode: 'screen',
-                color: 'black !important',
+                bg: 'elevated',
+                mixBlendMode: 'normal',
+                color: 'text !important',
                 fontSize: [58, 96],
                 width: ['100%', 'auto'],
                 py: 4,
                 px: [4, null, 6],
                 lineHeight: 0.9,
-                textTransform: 'none'
+                textTransform: 'none',
+                border: '1px solid',
+                borderColor: 'border'
               }}
             >
               Apply now

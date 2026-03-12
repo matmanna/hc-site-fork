@@ -58,7 +58,7 @@ export default function ScrollingHackathons({
             </Text>
             <Text
               variant="lead"
-              sx={{ color: 'muted', mr: 2, textAlign: 'center' }}
+              sx={{ color: 'text', mr: 2, textAlign: 'center' }}
             >
               from{' '}
               <Link href="https://hackathons.hackclub.com" sx={{ color: 'currentcolor' }}>

@@ -142,8 +142,10 @@ const PizzaPage = () => {
           <Box
             onClick={e => e.stopPropagation()}
             sx={{
-              bg: 'white',
+              bg: 'elevated',
               borderRadius: '16px',
+              border: '1px solid',
+              borderColor: 'border',
               p: 4,
               maxWidth: '600px',
               width: '90%',
@@ -443,7 +445,8 @@ const PizzaPage = () => {
               <Button
                 sx={{
                   marginTop: 16,
-                  backgroundColor: '#fff',
+                  backgroundColor: 'var(--theme-ui-colors-elevated)',
+                  border: '1px solid var(--theme-ui-colors-border)',
                   color: '#EEA820'
                 }}
               >
@@ -478,7 +481,8 @@ const PizzaPage = () => {
               <Button
                 sx={{
                   marginTop: 16,
-                  backgroundColor: '#fff',
+                  backgroundColor: 'var(--theme-ui-colors-elevated)',
+                  border: '1px solid var(--theme-ui-colors-border)',
                   color: '#FF8C37'
                 }}
               >
@@ -514,7 +518,8 @@ const PizzaPage = () => {
               <Button
                 sx={{
                   marginTop: 16,
-                  backgroundColor: '#fff',
+                  backgroundColor: 'var(--theme-ui-colors-elevated)',
+                  border: '1px solid var(--theme-ui-colors-border)',
                   color: '#EC3750'
                 }}
               >
@@ -560,7 +565,10 @@ const PizzaPage = () => {
                   }}
                 >
                   <Tilt
-                    sx={{ backgroundColor: '#fff' }}
+                    sx={{
+                      backgroundColor: 'var(--theme-ui-colors-elevated)',
+                      borderRadius: '8px'
+                    }}
                     options={{ scale: 1.25, perspective: 2000, speed: 500 }}
                   >
                     <Image
@@ -578,7 +586,7 @@ const PizzaPage = () => {
                         imageRendering: 'pixelated',
                         borderRadius: '8px',
                         border: `1.75px solid ${getColor(idx)}`,
-                        backgroundColor: '#fff',
+                        backgroundColor: 'var(--theme-ui-colors-elevated)',
                         zIndex: 2
                       }}
                     />
@@ -648,7 +656,8 @@ const PizzaPage = () => {
           >
             <Box
               sx={{
-                backgroundColor: '#fff',
+                backgroundColor: 'var(--theme-ui-colors-sheet)',
+                border: '1px solid var(--theme-ui-colors-border)',
                 padding: '16px',
                 borderRadius: '16px'
               }}
@@ -663,7 +672,7 @@ const PizzaPage = () => {
                 />
                 <Text
                   sx={{
-                    color: '#000',
+                    color: 'var(--theme-ui-colors-text)',
                     fontSize: 26,
                     display: 'block',
                     fontWeight: 600
@@ -674,7 +683,7 @@ const PizzaPage = () => {
               </Box>
               <Text
                 sx={{
-                  color: '#000',
+                  color: 'var(--theme-ui-colors-text)',
                   marginTop: '8px',
                   display: 'block',
                   fontSize: 18,
@@ -712,7 +721,8 @@ const PizzaPage = () => {
 
             <Box
               sx={{
-                backgroundColor: '#fff',
+                backgroundColor: 'var(--theme-ui-colors-sheet)',
+                border: '1px solid var(--theme-ui-colors-border)',
                 padding: '16px',
                 borderRadius: '16px'
               }}
@@ -727,7 +737,7 @@ const PizzaPage = () => {
                 />
                 <Text
                   sx={{
-                    color: '#000',
+                    color: 'var(--theme-ui-colors-text)',
                     fontSize: 26,
                     display: 'block',
                     fontWeight: 600
@@ -738,7 +748,7 @@ const PizzaPage = () => {
               </Box>
               <Text
                 sx={{
-                  color: '#000',
+                  color: 'var(--theme-ui-colors-text)',
                   marginTop: '8px',
                   display: 'block',
                   fontSize: 18,
@@ -783,7 +793,8 @@ const PizzaPage = () => {
 
             <Box
               sx={{
-                backgroundColor: '#fff',
+                backgroundColor: 'var(--theme-ui-colors-sheet)',
+                border: '1px solid var(--theme-ui-colors-border)',
                 padding: '16px',
                 borderRadius: '16px'
               }}
@@ -798,7 +809,7 @@ const PizzaPage = () => {
                 />
                 <Text
                   sx={{
-                    color: '#000',
+                    color: 'var(--theme-ui-colors-text)',
                     fontSize: 26,
                     display: 'block',
                     fontWeight: 600
@@ -809,7 +820,7 @@ const PizzaPage = () => {
               </Box>
               <Text
                 sx={{
-                  color: '#000',
+                  color: 'var(--theme-ui-colors-text)',
                   marginTop: '8px',
                   display: 'block',
                   fontSize: 18,

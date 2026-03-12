@@ -1,6 +1,16 @@
 import Icon from '@hackclub/icons'
 import { useEffect, useRef, useState } from 'react'
-import { Box, Button, Card, Flex, Grid, Input, Link, Text } from 'theme-ui'
+import {
+  Box,
+  Button,
+  Card,
+  Flex,
+  Grid,
+  Input,
+  Link,
+  Text,
+  useColorMode
+} from 'theme-ui'
 import { format, parse } from 'date-fns'
 import BGImg from '../../background-image'
 import background from '../../../public/home/footer.png'
@@ -33,6 +43,8 @@ const MailingList = () => {
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [data, setData] = useState({ finalHtml: [], names: [] })
+  const [colorMode] = useColorMode()
+  const isDarkMode = colorMode === 'dark'
   const formRef = useRef(null)
 
   const handleSubmit = async e => {
@@ -101,7 +113,11 @@ const MailingList = () => {
           maxWidth: '1050px',
           mx: 'auto',
           // mt: [3, 4],
-          background: 'rgb(255,255,255, 0.45)',
+          background: isDarkMode
+            ? 'rgba(17, 24, 39, 0.72)'
+            : 'rgb(255,255,255, 0.45)',
+          border: '1px solid',
+          borderColor: isDarkMode ? 'rgba(255, 255, 255, 0.14)' : 'border',
           position: 'relative',
           zIndex: 2,
           backdropFilter: 'blur(8px)'
@@ -133,7 +149,7 @@ const MailingList = () => {
               </Text>
               <Text
                 sx={{
-                  color: 'darkless',
+                  color: isDarkMode ? 'rgba(255, 255, 255, 0.88)' : 'darkless',
                   mt: 2,
                   fontSize: 3,
                   textAlign: 'left'
